@@ -3,9 +3,7 @@ from django.conf.urls import patterns, include, url
 from apps.core import views as coreViews
 from apps.users import views as userViews
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+admin.autodiscover()
 
 urlpatterns = patterns('',
     

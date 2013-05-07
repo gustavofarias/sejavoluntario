@@ -1,3 +1,5 @@
+# coding: utf-8
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -8,9 +10,13 @@ class User (models.Model):
     document = models.CharField(max_length=20)
     telephone = models.CharField(max_length=20)
     celphone = models.CharField(max_length=20)
+    
+    class Meta:
+        verbose_name_plural = "Usuários"
+        verbose_name = "Usuário"
 
     def __unicode__(self):
-            return u"%s" % self.id
+        return self.user.first_name
         
     def register(self):
         pass
