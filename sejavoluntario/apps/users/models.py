@@ -11,3 +11,6 @@ class User (models.Model):
 
     def __unicode__(self):
             return u"%s" % self.id
+        
+    def register(self):
+        pass
