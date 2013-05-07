@@ -1,0 +1,1164 @@
+/*
+
+1. TEMPLATE SETUP
+	1.1 Reset 
+	1.2 General styles
+	1.3 Typography - Only headings and link
+	1.4 Button styles
+	1.5 Image styles
+	1.6 List styles
+	1.7 Divider
+	1.8 Basic layout divs and common classes
+	
+2. TEMPLATE STRUCTURE
+	2.1 header
+	2.2 oquefazemos
+	2.3 fotos-eventos
+	2.5 doe-sem-cadastro
+	2.6 sub footer
+	2.7 contato
+	2.8 footer
+	2.9 other pages (css properties for pages other than index.html)
+	
+3. Pricing page
+
+4. Media queries
+
+5. Some fixes for browsers
+
+/*============================================================*/
+/*---------- 1. TEMPLATE SETUP ----------*/
+/*============================================================*/
+
+/*----------------------------------------*/
+/*----- 1.1 Reset -----*/
+/*----------------------------------------*/
+/* From - http://meyerweb.com/eric/tools/css/reset/  v2.0 | 20110126*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*----------------------------------------*/
+/*----- 1.2 General styles -----*/
+/*----------------------------------------*/
+body {
+	background: url(../images/pattern1.jpg) repeat #ffffff;
+	font-family: 'Lato', sans-serif;
+	font-size: 14px;
+	font-weight: 300;
+	color: #717576;
+	line-height: 1.5em;
+	text-shadow: 0px 1px 1px #ffffff;
+}
+img, embed, object, video {
+	max-width: 100%;
+	height: auto;
+}
+video {
+	width: 100% !important;
+	height: auto !important;
+}
+strong {
+	font-weight: bold;
+}
+/*----------------------------------------*/
+/*----- 1.3 Typography -----*/
+/*----------------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Vollkorn', serif;
+	color: #6b6b6b;
+	font-weight: 400;
+	line-height: 1.3em;
+	font-style: normal;
+	word-spacing: 1px;
+}
+h1 {
+	font-size: 30px;
+	line-height: 1em;
+	margin-bottom: 0px;
+}
+h2 {
+	font-size: 22px;
+	margin-bottom: 15px;
+}
+h3 {
+	font-size: 20px;
+	margin-bottom: 15px;
+}
+h4 {
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+h5 {
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1em;
+	margin-bottom: 0px;
+}
+h6 {
+	font-family: 'Lato', sans-serif;
+	font-size: 12px;
+	font-weight: 700;
+	margin-bottom: 0px;
+	float: left;
+}
+a {
+	color: #717576;
+	text-decoration: none;
+	cursor: pointer;
+	font-style: normal;
+	outline: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+	color: #6b6b6b;
+}
+/*Common heading style*/
+#fotos-eventos h2, #contato h2, #campanhas h2, #page_subfooter h2 {
+	background: url(../images/heading-text-divider-line.jpg) no-repeat right;
+	padding-right: 10px;
+	margin: 0px 10px 15px 0px;
+	float: left;
+}
+#sub_header h2 {
+	background: url(../images/heading-divider-darkline.png) no-repeat right;
+	padding-right: 10px;
+	margin: 0px 10px 15px 0px;
+	float: left;
+}
+/*----------------------------------------*/
+/*----- 1.4 Button Styles -----*/
+/*----------------------------------------*/
+/*Big verde button*/
+.btn_verde span {
+	padding: 17px 0 21px 20px;
+	font-family: 'Lato', sans-serif;
+	font-size: 14px;
+	color: #333;
+	line-height: 14px;
+	font-weight: 700;
+	text-align: center;
+	text-shadow: 0px 1px 1px #ffffff;
+	display: block;
+	text-transform: uppercase;
+}
+.btn_verde {
+	background: #9dd53a; /* Old browsers */
+	background: -moz-linear-gradient(top,  #9dd53a 0%, #a1d54f 50%, #80c217 51%, #7cbc0a 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9dd53a), color-stop(50%,#a1d54f), color-stop(51%,#80c217), color-stop(100%,#7cbc0a)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); /* IE10+ */
+	background: linear-gradient(top,  #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); /* W3C */
+	-webkit-border-radius: 4px; /* Saf3-4, iOS 1-3.2, Android ≤1.6 */
+	          border-radius: 4px; /* Opera 10.5, IE9, Saf5, Chrome, FF4+, iOS 4, Android 2.1+ */
+	
+	  /* useful if you don't want a bg color from leaking outside the border: */
+	  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+	display: block;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dd53a', endColorstr='#7cbc0a',GradientType=0 ); /* IE6-9 */
+	height: 52px;
+	padding-right: 20px;
+	text-decoration: none;
+}
+.btn_verde:hover {
+	text-decoration: none;
+}
+.btn-facebook-connect {
+	display: block;
+}
+
+/*Small verde button*/
+.btn_verdesmall span {
+	background: url(../images/btn-verde-small.png) no-repeat 0 0 transparent;
+	padding: 11px 0 13px 20px;
+	font-family: 'Lato', sans-serif;
+	font-size: 12px;
+	color: #333;
+	line-height: 12px;
+	font-weight: 700;
+	text-align: center;
+	text-shadow: 0px 1px 1px #ffffff;
+	display: block;
+	text-transform: uppercase;
+}
+.btn_verdesmall {
+	background: url(../images/btn-verde-small-span.png) no-repeat top right transparent;
+	height: 36px;
+	padding-right: 20px;
+	margin-top: 20px !important;
+	display: block;
+	text-decoration: none;
+	float: left;
+}
+.btn_verdesmall:hover span {
+	background-position: 0 -36px;
+}
+.btn_verdesmall:hover {
+	background-position: right -36px;
+	text-decoration: none;
+}
+/*Small grey button*/
+.btn_greysmall span {
+	background: url(../images/btn-grey-small.png) no-repeat 0 0 transparent;
+	padding: 11px 0 13px 20px;
+	font-family: 'Lato', sans-serif;
+	font-size: 12px;
+	color: #b9b9b9;
+	line-height: 12px;
+	font-weight: 700;
+	text-align: center;
+	text-shadow: 0px 1px 1px #ffffff;
+	display: block;
+	text-transform: uppercase;
+}
+.btn_greysmall {
+	background: url(../images/btn-grey-small-span.png) no-repeat top right transparent;
+	height: 36px;
+	padding-right: 20px;
+	margin-top: 20px !important;
+	display: block;
+	text-decoration: none;
+	float: left;
+}
+.btn_greysmall:hover span {
+	background-position: 0 -36px;
+}
+.btn_greysmall:hover {
+	background-position: right -36px;
+	text-decoration: none;
+}
+/*Extra small grey button (fixed width button)*/
+.btn {
+	background: url(../images/btn-upgrade.png) no-repeat;
+	width: 68px;
+	height: 20px;
+	font-family: 'Lato', sans-serif;
+	font-size: 9px;
+	color: #454545;
+	font-weight: 400;
+	text-align: center;
+	line-height: 2.4em;
+	text-transform: uppercase;
+	float: left;
+}
+.btn:hover {
+	text-decoration: none;
+}
+
+/*line behind button*/
+.centerline {
+	background: url(../images/line-center.png) repeat-x;
+	width: 100%;
+	height: 52px;
+	margin-top: 20px auto 0;
+	display: table;
+	text-align: center;
+}
+.centerline .btn_verde {
+	margin-top: 0px !important;
+}
+.centerline .btn_verdesmall, .centerline .btn_greysmall {
+	margin-top: 8px !important;
+}
+.centerline ul {
+	display: table;
+	margin: 20px auto 0;
+}
+.centerline ul li{
+	display: inline;
+	float: left;
+	width: 322px;
+}
+.centerline ul li:first-child{
+	margin-right: 20px;
+}
+
+
+/*----------------------------------------*/
+/*----- 1.5 Image styles -----*/
+/*----------------------------------------*/
+.image_noborder {
+	display: block;
+	margin-bottom: 10px;
+}
+.image_border {
+	background: #fcfcfc;
+	border: 1px solid #e6e6e6;
+	padding: 4px;
+	margin-bottom: 10px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	display: block;
+}
+.image_left {
+	background: #fcfcfc;
+	border: 1px solid #e6e6e6;
+	padding: 4px;
+	margin: 0px 10px 10px 0px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	float: left;
+}
+.image_right {
+	background: #fcfcfc;
+	border: 1px solid #e6e6e6;
+	padding: 4px;
+	margin: 0px 0px 10px 10px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	float: right;
+}
+/*----------------------------------------*/
+/*----- 1.6 List styles -----*/
+/*----------------------------------------*/
+ul.list1 li {
+	background: url(../images/bullet-checkmark.png) no-repeat 0 4px;
+	padding-left: 20px;
+	margin-bottom: 10px;
+	display: block;
+	list-style-type: none;
+}
+ul.list2 li {
+	background: url(../images/bullet-circles.png) no-repeat 0 4px;
+	padding-left: 22px;
+	margin-bottom: 10px;
+	display: block;
+	list-style-type: none;
+}
+ul.list3 li {
+	background: url(../images/bullet-plus.png) no-repeat 0 4px;
+	padding-left: 22px;
+	margin-bottom: 10px;
+	display: block;
+	list-style-type: none;
+}
+ol.number {
+	list-style: decimal;
+	list-style-position: inside;
+}
+ol.roman {
+	list-style: upper-roman;
+	list-style-position: inside;
+}
+ol.number li, ol.roman li {
+	padding-bottom: 10px;
+}
+/*----------------------------------------*/
+/*----- 1.7 Divider -----*/
+/*----------------------------------------*/
+.divider {
+	background: #ebebeb;
+	width: 100%;
+	height: 1px;
+	margin: 10px 0px 10px 0px;
+	float: left;
+}
+/*----------------------------------------*/
+/*----- 1.8 Basic layout divs and common classes -----*/
+/*----------------------------------------*/
+/*columns system has separate CSS - skeleton.css*/
+.row_color {
+	background: url(../images/div-grey-top.png) no-repeat center top #f8f8f8;
+	width: 100%;
+	border-bottom: 1px solid #eaeaea;
+}
+.coloredstrong {
+	font-size: 16px;
+	color: #dc8f89 !important;
+	font-weight: bold;
+}
+.smallstrong {
+	font-size: 12px;
+	font-weight: bold;
+}
+.textstyle1 {
+	text-align: center;
+}
+.textstyle2 {
+	padding-top: 4px;
+	margin-bottom: 15px;
+}
+.textstyle3 {
+	font-size: 12px;
+}
+/*============================================================*/
+/*---------- 2. TEMPLATE STRUCTRE ----------*/
+/*============================================================*/
+/*----------------------------------------*/
+/*----- 2.1 header -----*/
+/*----------------------------------------*/
+#header_wrapper {
+	background: url(../images/header-bg.png) no-repeat center top #e3e3e3;
+	width: 100%;
+	height: auto;
+}
+#header {
+	background: url(../images/nav-bg.png) no-repeat center top;
+	width:940px;
+	height: 90px;
+	z-index: 9999;
+	position:fixed;
+	top: 0;
+	left: 50%;
+	margin-left: -470px;
+}
+/*----- logo -----*/
+.logo h1 {
+	color: #ffffff;
+	margin-left: 20px;
+	margin-top: 6px; /*Adjust 'margin-top' if you have text logo*/
+	margin-bottom: 0px !important;
+	font-style: italic;
+}
+/*----- navigation -----*/
+#nav {
+	float: left;
+}
+#nav ul {
+	padding-top: 27px;
+	padding-right: 10px;
+	z-index: 999;
+	float: right;
+}
+#nav ul li {
+	padding: 0px 10px;
+	float: left;
+	background: none;
+	list-style-type: none;
+}
+#nav ul li a {
+	font-family: 'Lato', sans-serif;
+	font-size: 12px;
+	color: #ffffff;
+	font-weight: 400;
+	text-shadow: 0px 1px 0px #000000;
+	text-decoration:none;
+	text-transform: uppercase;
+	word-spacing: 2px;
+	outline: none;
+}
+#nav ul li a:hover, #nav ul li a.current {
+	color: #e3e3e3;
+}
+#nav li ul {
+	width: 170px; /*Adjust width if you have long text link*/
+	display: none;
+}
+#nav li:hover ul {
+	padding: 55px 0px 5px 0px;
+	margin-left: -20px;
+	position: absolute;
+	top: 0px;
+	display: block;
+	z-index: -9;
+}
+#nav li:hover li {
+	background: #333333;
+	padding: 5px 20px;
+	float: none;
+	line-height: 1em;
+}
+#nav li:hover li a {
+	font-size: 11px;
+}
+.coloredlink {
+	color: #e3e3e3 !important;
+}
+#nav li:hover li.firstdroplink {
+	border-top-right-radius: 4px;
+	-moz-border-radius-topright: 4px;
+	-webkit-border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-webkit-border-top-left-radius: 4px;
+	padding-top: 15px !important;
+}
+#nav li:hover li.lastdroplink {
+	border-bottom-right-radius: 4px;
+	-moz-border-radius-bottomright: 4px;
+	-webkit-border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+	padding-bottom: 15px !important;
+}
+#nav select {
+	display: none;
+	cursor: pointer !important;
+	color: #8b9192 !important;
+	outline: none;
+}
+/*----- slider -----*/
+/*css for parallax slider is in separate stylesheet 'cslider.css'*/
+/*'#slider_replace' will be displayed in mobile, in place of parallax slider*/
+#slider_replace {
+	padding: 30px 0px;
+	display: none;
+	float: left;
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	color: #4d656b;
+	text-shadow: 0px 1px 0px #d4d4d4;
+	text-align: left;
+	word-spacing: 3px;
+}
+#slider_replace h2 {
+	font-family: 'Lato', sans-serif;
+	font-size: 35px;
+	font-weight: 300;
+	color: #ffffff;
+	text-shadow: 0px 1px 1px #d4d4d4;
+	text-transform: uppercase;
+	word-spacing: 13px;
+}
+/*----------------------------------------*/
+/*----- 2.2 oquefazemos -----*/
+/*----------------------------------------*/
+#oquefazemos {
+	padding: 60px 0px;
+}
+#oquefazemos h1, #oquefazemos h4 {
+	text-align: center;
+}
+.icon_bg {
+	background: #e3e3e3;
+	width: 92px;
+	height: 92px;
+	margin: 40px auto 20px auto;
+	border-radius: 92px;
+	-moz-border-radius: 92px;
+	-webkit-border-radius: 92px;
+}
+.icon_bg img {
+	float: left;
+}
+/*----------------------------------------*/
+/*----- 2.3 fotos-eventos -----*/
+/*----------------------------------------*/
+#fotos-eventos {
+	padding: 110px 0px;
+}
+ul#mycarousel li {
+	background: #fcfcfc;
+	width: 210px;
+	height: 145px;
+	padding: 4px;
+	margin: 0;
+	border: 1px solid #e6e6e6;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	position: relative;
+	list-style: none;
+	float: left;
+}
+ul#mycarousel li img {
+	width: 210px;
+	height: 145px;
+	float: left;
+}
+.thumb {
+	position:relative;
+	overflow:hidden;
+}
+.thumb .zoom {
+	background: url(../images/zoom.png) 0 0 no-repeat transparent;
+	width: 80px;
+	height: 80px;
+	position:absolute;
+	left:-90px;
+	top: 34px;
+	outline: none;
+}
+.thumb .zoom:hover {
+	background: url(../images/zoom.png) 0 -80px no-repeat transparent;
+}
+/*----------------------------------------*/
+/*----- 2.5 doe-sem-cadastro -----*/
+/*----------------------------------------*/
+#doe-sem-cadastro {
+	padding: 110px 0px;
+}
+#doe-sem-cadastro h2 {
+	text-align: center;
+	margin-bottom: 8px;
+}
+#doe-sem-cadastro .btn_verde {
+	width: 250px;
+	margin: 15px auto 0;
+}
+.logo_grey {
+	width: 315px;
+	height: 79px;
+	margin: 0px auto 30px auto;
+}
+ul.textlist {
+	text-align: center;
+}
+ul.textlist li {
+	padding: 0px 7px;
+	font-size: 16px;
+	display: inline;
+	background: none;
+	list-style-type: none;
+}
+/*----------------------------------------*/
+/*----- 2.6 campanhas -----*/
+/*----------------------------------------*/
+#campanhas {
+	padding: 110px 0px;
+}
+#campanhas .btn_verde {
+	height: 34px;
+	margin: 18px auto 0;
+	padding: 0 20px;
+	width: 160px;
+}
+#campanhas .btn_verde span {
+	padding: 0;
+	line-height: 34px;
+}
+/*----------------------------------------*/
+/*----- 2.7 contato -----*/
+/*----------------------------------------*/
+#contato {
+	padding: 110px 0px 0px 0px;
+}
+/*----- contato form -----*/
+#contatoform ul li {
+	margin-bottom: 20px;
+	background: none;
+	list-style-type: none;
+}
+#contatoform input, #contatoform textarea {
+	background: #fcfcfc;
+	width: 288px;
+	height: 28px;
+	padding: 5px;
+	border: 1px solid #e6e6e6;
+	font-family: 'Lato', sans-serif;
+	font-size: 12px;
+	color: #c5c8c8;
+	line-height: 1.9em;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	display: block;
+}
+#contatoform textarea {
+	height: 88px;
+}
+#contatoform input.submit {
+	background: url(../images/btn-submit.png) no-repeat;
+	width: 300px;
+	height: 40px;
+	font-family: 'Lato', sans-serif;
+	font-size: 12px;
+	color: #454545;
+	font-weight: 700;
+	text-shadow: 0px 1px 1px #ededed;
+	cursor: pointer;
+	border: none;
+	text-transform: uppercase;
+}
+/*error*/
+#contatoform label.error {
+	display: none !important;
+}
+#contatoform input.error {
+	border: 1px solid #dc8f89;
+}
+#contatoform textarea.error {
+	border: 1px solid #dc8f89;
+}
+/*result*/
+#result {
+	width: 300px;
+	padding-top: 5px;
+	float: left;
+	display: block;
+}
+/*--- address section ---*/
+.address {
+	text-align: right;
+}
+.contato_info {
+	font-size: 16px;
+	color: #6b6b6b !important;
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+.contato_info a {
+	font-size: 16px;
+	color: #6b6b6b !important;
+	font-weight: bold;
+}
+/*--- social ---*/
+ul.social {
+	margin-bottom: 10px;
+}
+ul.social li {
+	background: #e3e3e3;
+	width: 46px;
+	height: 46px;
+	margin-left: 2px;
+	border-radius: 46px;
+	-moz-border-radius: 46px;
+	-webkit-border-radius: 46px;
+	list-style-type: none;
+	display: inline-block;
+}
+ul.social li img {
+	float: left;
+}
+/*--- twitter ---*/
+.twitter {
+	margin-top: 40px;
+	display: block;
+}
+.twitter p {
+	padding-right: 10px;
+	font-family: 'Vollkorn', serif;
+	font-size: 16px;
+	color: #6b6b6b;
+	float: left;
+}
+.twitter a {
+	color: #dc8f89;
+}
+/*----------------------------------------*/
+/*----- 2.8 footer -----*/
+/*----------------------------------------*/
+#footer {
+	background: #2b2b2b;
+	width: 900px;
+	padding: 20px;
+	margin: 40px auto 0px auto;
+	font-size: 11px;
+	color: #717677;
+	font-weight: 400;
+	text-shadow: 0px 1px 0px #000000;
+	border-top-right-radius: 4px;
+	-moz-border-radius-topright: 4px;
+	-webkit-border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-webkit-border-top-left-radius: 4px;
+}
+#footer p {
+	float: left;
+}
+#footer ul {
+	float: right;
+}
+#footer ul li {
+	margin-left: 10px;
+	background: none;
+	list-style-type: none;
+	display: inline-block;
+	float: left;
+}
+#footer a {
+	font-size: 11px;
+	color: #717677;
+	text-shadow: 0px 1px 0px #000000;
+}
+.scrollToTop {
+	display: none;
+}
+/*----------------------------------------*/
+/*----- 2.9 Other Pages -----*/
+/*----------------------------------------*/
+#content {
+	padding: 40px 0px;
+}
+/*--- subfooter in pages like pricing*/
+#page_subfooter {
+	padding-top: 40px;
+}
+/*============================================================*/
+/*---------- 3. PRICING ----------*/
+/*============================================================*/
+#sub_header {
+	width: 100%;
+	padding: 110px 0px 25px 0px;
+	float: left;
+}
+/*--- pricing intro ---*/
+.pricing_intro {
+	padding: 40px 0px;
+}
+.pricing_intro h2 {
+	text-align: center;
+	margin-bottom: 0px;
+}
+.pricing_intro .textstyle1 {
+	font-size: 16px;
+}
+/*--- pricing table ---*/
+.pricing_table {
+	margin-bottom: 40px;
+	border: 1px solid #d4d4d4;
+	border-width: 1px 1px 4px 1px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-top-left-radius: 5px;
+	border-bottom-left-radius: 9px;
+	border-bottom-right-radius: 9px;
+	-moz-border-radius-bottomleft: 9px;
+	-moz-border-radius-bottomright: 9px;
+	-webkit-border-bottom-right-radius: 9px;
+	-webkit-border-bottom-left-radius: 9px;
+}
+.pricing_table table {
+	width: 100%;
+	font-family: 'Lato', sans-serif;
+	font-size: 12px;
+	color: #c0c2c2;
+	font-weight: 400;
+	text-shadow: 0px 1px 1px #ffffff;
+}
+.pricing_table thead th {
+	background: #d4d4d4;
+	width: 84.3%;
+	padding: 13px 8%;
+	font-family: 'Vollkorn', serif;
+	font-size: 24px;
+	color: #f4f4f4;
+	text-align: center;
+	text-transform: uppercase;
+	text-shadow: 0px 1px 1px #878787;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+	-webkit-border-top-right-radius: 4px;
+	-webkit-border-top-left-radius: 4px;
+	float: left;
+}
+.pricing_table tfoot td {
+	background: #ededed;
+	width: 84.3%;
+	padding: 20px 8%;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	-moz-border-radius-bottomleft: 6px;
+	-moz-border-radius-bottomright: 6px;
+	-webkit-border-bottom-right-radius: 6px;
+	-webkit-border-bottom-left-radius: 6px;
+}
+.pricing_table td {
+	background: #f6f6f6;
+	width: 84.3%;
+	padding: 10px 8%;
+	border-top: 1px solid #ffffff;
+	border-bottom: 1px solid #d4d4d4;
+	float: left;
+}
+.pricing_table td.focus {
+	background: #ededed;
+	width: 84.3%;
+	padding: 25px 8%;
+	font-family: 'Lato', sans-serif;
+	font-size: 32px;
+	color: #c0c2c2;
+	font-weight: 400;
+	text-align: center;
+	text-shadow: 0px 1px 1px #ffffff;
+	border-top: 1px solid #f7f7f7;
+	border-bottom: 1px solid #d4d4d4;
+}
+.pricing_table td.focus span {
+	font-size: 10px;
+	display: block;
+}
+.pricing_table td h6 {
+	width: 60%;
+	font-family: 'Lato', sans-serif;
+	font-size: 12px;
+	color: #c0c2c2;
+	font-weight: 400;
+	text-shadow: 0px 1px 1px #ffffff;
+	float: left;
+}
+.pricing_table td p {
+	width: 40%;
+	text-align: right;
+	float: left;
+}
+.pricing_table tfoot td .btn_verdesmall, .pricing_table tfoot td .btn_greysmall {
+	margin-top: 0px !important;
+}
+/*--- featured table ---*/
+.featured_table {
+	position: relative;
+}
+.featured_table thead th {
+	background: #c6c6c6;
+}
+.featured_table td.focus {
+	color: #6b6b6b;
+}
+.featured_table td h6 {
+	color: #909697;
+}
+.featured_table td p {
+	color: #6b6e6f;
+}
+.ribbon {
+	background: url(../images/corner-best.png) no-repeat;
+	width: 48px;
+	height: 48px;
+	position: absolute;
+	top: -5px;
+	right: -5px;
+}
+/*============================================================*/
+/*---------- 4. Media queries ----------*/
+/*============================================================*/
+
+/*----------------------------------------*/
+/*----- 4.1 Tablet (Portrait) / Design for a width of 768px -----*/
+/*----------------------------------------*/
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+
+#oquefazemos, #fotos-eventos, #doe-sem-cadastro, #contato, #campanhas {
+ padding: 40px 0px;
+}
+#sub_header {
+ padding: 40px 0px 25px 0px;
+}
+#nav ul li a.current {
+ color: #ffffff !important;
+}
+#header {
+ background: #2b2b2b;
+ border-bottom-right-radius: 4px;
+ -moz-border-radius-bottomright: 4px;
+ -webkit-border-bottom-right-radius: 4px;
+ border-bottom-left-radius: 4px;
+ -moz-border-radius-bottomleft: 4px;
+ -webkit-border-bottom-left-radius: 4px;
+ width:748px;
+ position: relative !important;
+ left: 50%;
+ margin-left: -374px;
+ height: auto !important;
+}
+#contatoform input, #contatoform textarea {
+ width: 224px;
+}
+#contatoform input.submit {
+ background: url(../images/btn-submit-small.png) no-repeat;
+ width: 236px;
+}
+#footer {
+ width: 708px;
+ padding: 20px;
+}
+.scrollToTop {
+ width: 25px;
+ height: 30px;
+ position:fixed;
+ bottom:40px;
+ right:40px;
+ display:none;
+ background: url(../images/Arrow-Up.png) no-repeat;
+ font-size: 0px;
+ text-indent: -9999;
+}
+/*for slider*/
+#slider_wrapper {
+ float: left;
+ padding-bottom: 20px !important;
+ padding-top: 0px !important;
+}
+.vlt-slider {
+ width: 748px !important;
+ height: 440px !important;
+ margin: 40px auto 20px auto !important;
+}
+.vlt-slide h2 {
+ font-size: 35px !important;
+ top: 60px !important; /*specify 'top' as per your your choice*/
+}
+.vlt-slide p {
+ top: 120px !important;
+}
+.vlt-slide .vlt-link {
+ top: 250px !important; /*depends on p height*/
+}
+}
+
+/*----------------------------------------*/
+/*----- 4.2 Mobile (Portrait) / Design for a width of 320px -----*/
+/*----------------------------------------*/
+
+@media only screen and (max-width: 767px) {
+
+.logo h1 {
+width: 315px;
+height: 79px;
+margin: 0 auto;
+}
+
+.container .columns, .container .column {
+margin: 10px 0px 10px 0px !important;
+}
+.logo {
+width: 300px;
+}
+#nav ul {
+display: none;
+}
+#nav {
+text-align:center;
+}
+#nav select {
+display: inline-block;
+text-align:left;
+width:60%;
+border:solid 1px #46494d;
+padding: 5px;
+background:transparent;
+color: #82848a;
+}
+#header {
+ background: #2b2b2b;
+ border-bottom-right-radius: 4px;
+ -moz-border-radius-bottomright: 4px;
+ -webkit-border-bottom-right-radius: 4px;
+ border-bottom-left-radius: 4px;
+ -moz-border-radius-bottomleft: 4px;
+ -webkit-border-bottom-left-radius: 4px;
+ width:300px;
+ position: relative !important;
+ left: 50%;
+ margin-left: -150px;
+ height: auto !important;
+ padding-bottom: 10px;
+}
+#oquefazemos, #fotos-eventos, #doe-sem-cadastro, #campanhas, #contato {
+ padding: 30px 0px;
+}
+#sub_header {
+ padding: 40px 0px 25px 0px;
+}
+#footer {
+ width: 260px;
+ padding: 20px;
+}
+#footer p {
+float: none !important;
+}
+#footer ul {
+ float: left;
+ display: block;
+}
+#footer ul li {
+ margin-right: 10px;
+ margin-left: 0px;
+}
+/*slider*/
+#vlt-slider {
+display: none !important;
+}
+#slider_replace {
+display: block;
+}
+}
+
+/*----------------------------------------*/
+/*----- 4.3 Mobile (Landscape) / Design for a width of 480px -----*/
+/*----------------------------------------*/
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+/* Other properties are according to those specified for Mobile (Portrait)*/
+#header {
+ background: #2b2b2b;
+ border-bottom-right-radius: 4px;
+ -moz-border-radius-bottomright: 4px;
+ -webkit-border-bottom-right-radius: 4px;
+ border-bottom-left-radius: 4px;
+ -moz-border-radius-bottomleft: 4px;
+ -webkit-border-bottom-left-radius: 4px;
+ width:420px;
+ position: relative !important;
+ left: 50%;
+ margin-left: -210px;
+ height: auto !important;
+ padding-bottom: 10px;
+}
+.logo {
+width: 420px;
+}
+.address {
+text-align: left !important;
+}
+#footer {
+ width: 380px;
+ padding: 20px;
+}
+}
+
+/*============================================================*/
+/*---------- 5. Browser fixes ----------*/
+/*============================================================*/
+/*----- IE 8 fix -----*/
+@media \0screen {
+.pricing_table thead th, .pricing_table td, .pricing_table td.focus, .pricing_table tfoot td {
+	width: 84%;
+}
+}
+/*----- Opera fix -----*/
+@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0) {
+.pricing_table thead th, .pricing_table td, .pricing_table td.focus, .pricing_table tfoot td {
+ width: 85.9%;
+ padding-left: 7.8%;
+ padding-right: 7.7%;
+}
+}
+/*----- Chrome fix -----*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+.pricing_table thead th, .pricing_table td, .pricing_table td.focus, .pricing_table tfoot td {
+ width: 84.6%;
+}
+}
