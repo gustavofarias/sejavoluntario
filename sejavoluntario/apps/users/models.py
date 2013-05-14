@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class User (models.Model):
+class SejaVoluntarioUser (models.Model):
     user = models.ForeignKey(User)
     photo = models.FileField(upload_to='/image')
     document = models.CharField(max_length=20)
@@ -16,7 +16,4 @@ class User (models.Model):
         verbose_name = "Usuário"
 
     def __unicode__(self):
-        return self.user.first_name
-        
-    def register(self):
-        pass
+        return self.user.email

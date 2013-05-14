@@ -8,8 +8,8 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'User'
-        db.create_table('users_user', (
+        # Adding model 'SejaVoluntarioUser'
+        db.create_table('users_sejavoluntariouser', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
             ('photo', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
@@ -17,12 +17,12 @@ class Migration(SchemaMigration):
             ('telephone', self.gf('django.db.models.fields.CharField')(max_length=20)),
             ('celphone', self.gf('django.db.models.fields.CharField')(max_length=20)),
         ))
-        db.send_create_signal('users', ['User'])
+        db.send_create_signal('users', ['SejaVoluntarioUser'])
 
 
     def backwards(self, orm):
-        # Deleting model 'User'
-        db.delete_table('users_user')
+        # Deleting model 'SejaVoluntarioUser'
+        db.delete_table('users_sejavoluntariouser')
 
 
     models = {
@@ -62,8 +62,8 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        'users.user': {
-            'Meta': {'object_name': 'User'},
+        'users.sejavoluntariouser': {
+            'Meta': {'object_name': 'SejaVoluntarioUser'},
             'celphone': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
             'document': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
