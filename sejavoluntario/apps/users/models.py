@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class SejaVoluntarioUser (models.Model):
+class UserProfile (models.Model):
     user = models.ForeignKey(User)
     photo = models.FileField(upload_to='/image')
     document = models.CharField(max_length=20)

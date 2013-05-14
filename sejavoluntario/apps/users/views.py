@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from sejavoluntario.apps.users.models import SejaVoluntarioUser
 from sejavoluntario.apps.users.forms import UserRegistrationForm
 
 def userRegistration(request):

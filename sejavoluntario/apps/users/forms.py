@@ -4,7 +4,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.db import transaction
-from sejavoluntario.apps.users.models import SejaVoluntarioUser
+from sejavoluntario.apps.users.models import UserProfile
 
 
 class UserRegistrationForm(forms.Form):
@@ -44,9 +44,9 @@ class UserRegistrationForm(forms.Form):
         
         with transaction.commit_on_success():
             user = User.objects.create_user(username,email,password)
-            sejaVoluntarioUser = SejaVoluntarioUser()
-            sejaVoluntarioUser.user = user
-            sejaVoluntarioUser.save()
+            userProfile = UserProfile()
+            userProfile.user = user
+            userProfile.save()
             user.save()
         
         return user

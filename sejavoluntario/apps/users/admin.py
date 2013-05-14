@@ -6,4 +6,4 @@ from django.contrib import admin
 
 from sejavoluntario.apps.users import models
 
-admin.site.register(models.SejaVoluntarioUser)
+admin.site.register(models.UserProfile)
