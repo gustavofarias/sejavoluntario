@@ -5,6 +5,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.db import transaction
 from sejavoluntario.apps.users.models import UserProfile
+from sejavoluntario.apps.users.models import Banco
 
 
 class UserRegistrationForm(forms.Form):
@@ -50,3 +51,15 @@ class UserRegistrationForm(forms.Form):
             user.save()
         
         return user
+    
+class BankRegistrationForm(forms.Form):
+    name = forms.CharField(max_length=100)
+    
+    def save(self, *args, **kwargs):
+        
+        name = self.cleaned_data.get('name')
+        
+        with transaction.commit_on_success():
+            bank = Banco.objects.create_bank(name)
+        
+        return bank

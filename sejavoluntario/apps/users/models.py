@@ -69,19 +69,35 @@ class UserProfile (models.Model):
 
 class Voluntario(UserProfile):
     #participacoes = models.ManyToManyField(Campanha,
-    #help_text = "Campanhas que o usuario participou", null=True, blank=True)
+        #help_text = "Campanhas que o usuario participou", null=True, blank=True)
     sexo = models.CharField(max_length=1, blank=True, null=True)
     nascimento = models.DateTimeField(blank=True, null=True)
     
+class BankManager(models.Manager):
+    def create_bank(self, name):
+        bank = self.create(nome=name)
+        return bank
+    
 class Banco(models.Model):
     nome = models.CharField(max_length=20)
-
+    objects = BankManager()
+    
+    def __unicode__(self):
+        return self.nome
+    
 class DadosBancarios(models.Model):
     agencia = models.IntegerField()
     conta = models.IntegerField()
     favorecido = models.CharField(max_length=40)
     
     banco = models.ForeignKey(Banco)
+    
+    class Meta:
+        verbose_name_plural = "Dados Bancários"
+        verbose_name = "Dados Bancários"
+        
+    def __unicode__(self):
+        return self.favorevido
 
 class Beneficiario(UserProfile):
     banco = models.ForeignKey(DadosBancarios)
