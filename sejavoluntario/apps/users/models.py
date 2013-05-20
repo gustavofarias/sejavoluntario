@@ -37,18 +37,32 @@ class Cidade(models.Model):
     def __unicode__(self):
         return u'{0} ({1})'.format(self.nome, self.estado.sigla)
 
+class AddressManager(models.Manager):
+    def create_address(self, logradouro, numero, complemento, cep):
+        address = self.create(logradouro=logradouro,
+                              numero=numero,
+                              complemento=complemento,
+                              cep=cep)
+        return address
 
 class Endereco(models.Model):
-    logradouro = models.TextField(null=True, blank=True, default=None)
+    logradouro = models.TextField(max_length=255,)
     numero = models.IntegerField(null=True, blank=True, default=None)
-    complemento = models.CharField(max_length=255, null=True, blank=True, default=None)
+    complemento = models.CharField(max_length=255,null=True, blank=True, default=None)
+    cep = models.IntegerField(max_length=6,)
     estado = models.ForeignKey(Estado, null=True, blank=True, default=None)
     cidade = models.ForeignKey(Cidade, null=True, blank=True, default=None)
     pais = models.ForeignKey(Pais, null=True, blank=True, default=None)
+    
+    objects = AddressManager()
 
     class Meta:
         verbose_name_plural = "Endereços"
         verbose_name = "Endereço"
+        
+    def __unicode__(self):
+        return str(self.cep)
+        
 
 class UserProfile (models.Model):
     user = models.ForeignKey(User)

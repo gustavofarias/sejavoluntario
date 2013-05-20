@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.db import transaction
 from sejavoluntario.apps.users.models import Area
 from sejavoluntario.apps.users.models import Banco
+from sejavoluntario.apps.users.models import Endereco
 from sejavoluntario.apps.users.models import UserProfile
 from sejavoluntario.apps.users.models import Voluntario
 
@@ -98,6 +99,30 @@ class BankDataRegistrationForm(forms.Form):
         favorecido = self.cleaned_data.get('favorecido')
         
         with transaction.commit_on_success():
-            bank_data = DadosBancarios.objects.create_bank_data(banco=banco, agencia=agencia, conta=conta, favorecido=favorecido)
+            bank_data = DadosBancarios.objects.create_bank_data(banco=banco,
+                                                                agencia=agencia,
+                                                                conta=conta,
+                                                                favorecido=favorecido)
         
         return bank_data
+    
+class AddressRegistrationForm(forms.Form):
+    logradouro = forms.CharField(max_length=255)
+    complemento = forms.CharField(max_length=255)
+    cep = forms.IntegerField()
+    numero = forms.IntegerField()
+
+    def save(self, *args, **kwargs):
+        
+        logradouro = self.cleaned_data.get('logradouro')
+        complemento = self.cleaned_data.get('complemento')
+        cep = self.cleaned_data.get('cep')
+        numero = self.cleaned_data.get('numero')
+        
+        with transaction.commit_on_success():
+            address = Endereco.objects.create_address(logradouro=logradouro,
+                                                      complemento=complemento,
+                                                      cep=cep,
+                                                      numero=numero)
+        
+        return address

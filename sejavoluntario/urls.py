@@ -13,5 +13,6 @@ urlpatterns = patterns('',
     url(r'^$', coreViews.index),
     url(r'^user/register/?$', userViews.userRegistration, name="user_registration"),
     url(r'^bank/register/?$', userViews.bankDataRegistration, name="bank_registration"),
+    url(r'^address/register/?$', userViews.addressRegistration, name="address_registration"),
     
 )
