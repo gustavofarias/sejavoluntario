@@ -84,14 +84,20 @@ class UserRegistrationForm(forms.Form):
         
         return user
     
-class BankRegistrationForm(forms.Form):
-    name = forms.CharField(max_length=100)
+class BankDataRegistrationForm(forms.Form):
+    banco = forms.ModelChoiceField(queryset=Banco.objects.all())
+    agencia = forms.IntegerField()
+    conta = forms.IntegerField()
+    favorecido = forms.CharField(max_length=100)
     
     def save(self, *args, **kwargs):
         
-        name = self.cleaned_data.get('name')
+        banco = self.cleaned_data.get('banco')
+        agencia = self.cleaned_data.get('agencia')
+        conta = self.cleaned_data.get('conta')
+        favorecido = self.cleaned_data.get('favorecido')
         
         with transaction.commit_on_success():
-            bank = Banco.objects.create_bank(name)
+            bank_data = DadosBancarios.objects.create_bank_data(banco=banco, agencia=agencia, conta=conta, favorecido=favorecido)
         
-        return bank
+        return bank_data

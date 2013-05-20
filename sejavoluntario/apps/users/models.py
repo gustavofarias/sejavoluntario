@@ -73,17 +73,16 @@ class Voluntario(UserProfile):
     sexo = models.CharField(max_length=1, blank=True, null=True)
     nascimento = models.DateTimeField(blank=True, null=True)
     
-class BankManager(models.Manager):
-    def create_bank(self, name):
-        bank = self.create(nome=name)
-        return bank
-    
 class Banco(models.Model):
     nome = models.CharField(max_length=20)
-    objects = BankManager()
     
     def __unicode__(self):
         return self.nome
+
+class BankDataManager(models.Manager):
+    def create_bank_data(self, banco, agencia, conta, favorecido):
+        bank_data = self.create(banco=banco, agencia=agencia, conta=conta, favorecido=favorecido)
+        return bank_data
     
 class DadosBancarios(models.Model):
     agencia = models.IntegerField()
@@ -91,6 +90,8 @@ class DadosBancarios(models.Model):
     favorecido = models.CharField(max_length=40)
     
     banco = models.ForeignKey(Banco)
+    
+    objects = BankDataManager()
     
     class Meta:
         verbose_name_plural = "Dados Bancários"
