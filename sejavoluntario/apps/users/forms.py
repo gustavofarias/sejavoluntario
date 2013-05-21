@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.db import transaction
 from sejavoluntario.apps.users.models import Area
 from sejavoluntario.apps.users.models import Banco
+from sejavoluntario.apps.users.models import Beneficiario
 from sejavoluntario.apps.users.models import Endereco
 from sejavoluntario.apps.users.models import UserProfile
 from sejavoluntario.apps.users.models import Voluntario
@@ -83,8 +84,69 @@ class UserRegistrationForm(forms.Form):
             voluntario.areas = area
             voluntario.save()
         
-        return user
+        return voluntario
     
+class BeneficiarioRegistrationForm(forms.Form):
+    
+    name = forms.CharField(max_length=200)
+    email = forms.EmailField()
+    password = forms.CharField(widget=forms.PasswordInput())
+    repeat_password = forms.CharField(widget=forms.PasswordInput())
+    area = forms.MultipleChoiceField(choices=Area.objects.all(),
+                                  widget=CheckboxSelectMultiple,
+                                  label="Área de interesse",)
+    site = forms.URLField()
+    
+    def __init__(self, *args, **kwargs):
+        
+        super(BeneficiarioRegistrationForm, self).__init__(*args, **kwargs)
+
+        self.fields['area'].choices = [(area.pk, area.name) for area in Area.objects.all()]
+        
+    
+    def clean_email(self):
+        try:
+            User.objects.get(email=self.data.get('email'))
+            raise forms.ValidationError(u"E-mail já cadastrado.")
+        except User.DoesNotExist:
+            logging.info("Email ainda não existe na base de dados")
+
+        return self.data.get('email')
+    
+    def clean(self):
+        cleaned_data = super(BeneficiarioRegistrationForm, self).clean()
+        password = cleaned_data.get("password")
+        repeat_password = cleaned_data.get("repeat_password")
+        if password != repeat_password:
+            raise forms.ValidationError("Passwd and Repeat passwd don't match.")
+
+        return cleaned_data
+    
+    def save(self, *args, **kwargs):
+        user = None
+
+        name = self.cleaned_data.get('name')
+        email = self.cleaned_data.get('email')
+        password = self.cleaned_data.get('password')
+        area = self.cleaned_data.get('area')
+        site = self.cleaned_data.get('site')
+        username = email
+        
+        with transaction.commit_on_success():
+            user = User.objects.create_user(username,email,password)
+            user.first_name = name
+            user.save()
+
+            beneficiario = Beneficiario()
+            beneficiario.user = user
+            beneficiario.site = site
+            beneficiario.save()
+
+            beneficiario.areas = area
+            beneficiario.save()
+        
+        return beneficiario
+
 class BankDataRegistrationForm(forms.Form):
     banco = forms.ModelChoiceField(queryset=Banco.objects.all())
     agencia = forms.IntegerField()

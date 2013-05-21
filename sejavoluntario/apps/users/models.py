@@ -115,5 +115,5 @@ class DadosBancarios(models.Model):
         return self.favorevido
 
 class Beneficiario(UserProfile):
-    banco = models.ForeignKey(DadosBancarios)
+    banco = models.ForeignKey(DadosBancarios, null=True, blank=True, default=None)
     site = models.URLField(null=True, blank=True, default=None)

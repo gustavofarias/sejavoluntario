@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from sejavoluntario.apps.users.forms import AddressRegistrationForm
+from sejavoluntario.apps.users.forms import BeneficiarioRegistrationForm
 from sejavoluntario.apps.users.forms import BankDataRegistrationForm
 from sejavoluntario.apps.users.forms import UserRegistrationForm
 
@@ -39,5 +40,18 @@ def addressRegistration(request):
         form = AddressRegistrationForm()
 
     return render(request, 'addressregistrationform.html', {
+        'form': form,
+    })
+    
+def beneficiarioRegistration(request):
+    if request.method == 'POST':
+        form = BeneficiarioRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'thanks.html')
+    else:
+        form = BeneficiarioRegistrationForm()
+
+    return render(request, 'beneficiarioregistrationform.html', {
         'form': form,
     })
