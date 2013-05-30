@@ -3,7 +3,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 class Area (models.Model):
     name = models.CharField(max_length=255)
     
@@ -72,6 +71,7 @@ class UserProfile (models.Model):
     celphone = models.CharField(max_length=20)
     
     areas = models.ManyToManyField(Area)
+    
     endereco = models.ForeignKey(Endereco, default=None, null=True, blank=True)
     
     class Meta:
@@ -82,8 +82,6 @@ class UserProfile (models.Model):
         return self.user.email
 
 class Voluntario(UserProfile):
-    #participacoes = models.ManyToManyField(Campanha,
-        #help_text = "Campanhas que o usuario participou", null=True, blank=True)
     sexo = models.CharField(max_length=1, blank=True, null=True)
     nascimento = models.DateTimeField(blank=True, null=True)
     

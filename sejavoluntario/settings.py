@@ -128,6 +128,7 @@ INSTALLED_APPS = (
     'south',
     'sejavoluntario.apps.core',
     'sejavoluntario.apps.users',
+    'sejavoluntario.apps.events',
 )
 
 # A sample logging configuration. The only tangible logging

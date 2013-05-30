@@ -35,7 +35,7 @@
 	position: absolute;
 	top: -38px;
 	right: 0px;
-	background: url(../images/carousal-arr-sprite.png) no-repeat -29px 0;
+	background: url(../img/carousal-arr-sprite.png) no-repeat -29px 0;
 	width: 29px;
 	height: 32px;
 	cursor: pointer;
@@ -43,7 +43,7 @@
 .jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-next-horizontal {
 	left: 0px;
 	right: auto;
-	background-image: url(../images/carousal-arr-sprite.png);
+	background-image: url(../img/carousal-arr-sprite.png);
 }
 .jcarousel-skin-tango .jcarousel-next-horizontal:hover, .jcarousel-skin-tango .jcarousel-next-horizontal:focus {
 	background-position: -29px -32px;
@@ -59,7 +59,7 @@
 	position: absolute;
 	top: -38px;
 	right: 30px;
-	background: url(../images/carousal-arr-sprite.png) no-repeat 0 -32px;
+	background: url(../img/carousal-arr-sprite.png) no-repeat 0 -32px;
 	width: 29px;
 	height: 32px;
 	cursor: pointer;
@@ -67,7 +67,7 @@
 .jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-prev-horizontal {
 	left: auto;
 	right: 0px;
-	background-image: url(../images/carousal-arr-sprite.png);
+	background-image: url(../img/carousal-arr-sprite.png);
 }
 .jcarousel-skin-tango .jcarousel-prev-horizontal:hover, .jcarousel-skin-tango .jcarousel-prev-horizontal:focus {
 	background-position: 0 0;
@@ -100,7 +100,7 @@ margin-top: 30px !important;
  position: absolute;
  top: -5px;
  right: 0px;
- background: url(../images/carousal-arr-sprite.png) no-repeat -29px 0;
+ background: url(../img/carousal-arr-sprite.png) no-repeat -29px 0;
  width: 29px;
  height: 32px;
  cursor: pointer;
@@ -109,7 +109,7 @@ margin-top: 30px !important;
  position: absolute;
  top: -5px;
  right: 30px;
- background: url(../images/carousal-arr-sprite.png) no-repeat 0 -32px;
+ background: url(../img/carousal-arr-sprite.png) no-repeat 0 -32px;
  width: 29px;
  height: 32px;
  cursor: pointer;

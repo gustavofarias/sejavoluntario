@@ -67,7 +67,7 @@ table {
 /*----- 1.2 General styles -----*/
 /*----------------------------------------*/
 body {
-	background: url(../images/pattern1.jpg) repeat #ffffff;
+	background: url(../img/pattern1.jpg) repeat #ffffff;
 	font-family: 'Lato', sans-serif;
 	font-size: 14px;
 	font-weight: 300;
@@ -143,13 +143,13 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 /*Common heading style*/
 #fotos-eventos h2, #contato h2, #campanhas h2, #page_subfooter h2 {
-	background: url(../images/heading-text-divider-line.jpg) no-repeat right;
+	background: url(../img/heading-text-divider-line.jpg) no-repeat right;
 	padding-right: 10px;
 	margin: 0px 10px 15px 0px;
 	float: left;
 }
 #sub_header h2 {
-	background: url(../images/heading-divider-darkline.png) no-repeat right;
+	background: url(../img/heading-divider-darkline.png) no-repeat right;
 	padding-right: 10px;
 	margin: 0px 10px 15px 0px;
 	float: left;
@@ -198,7 +198,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 
 /*Small verde button*/
 .btn_verdesmall span {
-	background: url(../images/btn-verde-small.png) no-repeat 0 0 transparent;
+	background: url(../img/btn-verde-small.png) no-repeat 0 0 transparent;
 	padding: 11px 0 13px 20px;
 	font-family: 'Lato', sans-serif;
 	font-size: 12px;
@@ -211,7 +211,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 	text-transform: uppercase;
 }
 .btn_verdesmall {
-	background: url(../images/btn-verde-small-span.png) no-repeat top right transparent;
+	background: url(../img/btn-verde-small-span.png) no-repeat top right transparent;
 	height: 36px;
 	padding-right: 20px;
 	margin-top: 20px !important;
@@ -228,7 +228,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 /*Small grey button*/
 .btn_greysmall span {
-	background: url(../images/btn-grey-small.png) no-repeat 0 0 transparent;
+	background: url(../img/btn-grey-small.png) no-repeat 0 0 transparent;
 	padding: 11px 0 13px 20px;
 	font-family: 'Lato', sans-serif;
 	font-size: 12px;
@@ -241,7 +241,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 	text-transform: uppercase;
 }
 .btn_greysmall {
-	background: url(../images/btn-grey-small-span.png) no-repeat top right transparent;
+	background: url(../img/btn-grey-small-span.png) no-repeat top right transparent;
 	height: 36px;
 	padding-right: 20px;
 	margin-top: 20px !important;
@@ -258,7 +258,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 /*Extra small grey button (fixed width button)*/
 .btn {
-	background: url(../images/btn-upgrade.png) no-repeat;
+	background: url(../img/btn-upgrade.png) no-repeat;
 	width: 68px;
 	height: 20px;
 	font-family: 'Lato', sans-serif;
@@ -276,7 +276,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 
 /*line behind button*/
 .centerline {
-	background: url(../images/line-center.png) repeat-x;
+	background: url(../img/line-center.png) repeat-x;
 	width: 100%;
 	height: 52px;
 	margin-top: 20px auto 0;
@@ -344,21 +344,21 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 /*----- 1.6 List styles -----*/
 /*----------------------------------------*/
 ul.list1 li {
-	background: url(../images/bullet-checkmark.png) no-repeat 0 4px;
+	background: url(../img/bullet-checkmark.png) no-repeat 0 4px;
 	padding-left: 20px;
 	margin-bottom: 10px;
 	display: block;
 	list-style-type: none;
 }
 ul.list2 li {
-	background: url(../images/bullet-circles.png) no-repeat 0 4px;
+	background: url(../img/bullet-circles.png) no-repeat 0 4px;
 	padding-left: 22px;
 	margin-bottom: 10px;
 	display: block;
 	list-style-type: none;
 }
 ul.list3 li {
-	background: url(../images/bullet-plus.png) no-repeat 0 4px;
+	background: url(../img/bullet-plus.png) no-repeat 0 4px;
 	padding-left: 22px;
 	margin-bottom: 10px;
 	display: block;
@@ -390,7 +390,7 @@ ol.number li, ol.roman li {
 /*----------------------------------------*/
 /*columns system has separate CSS - skeleton.css*/
 .row_color {
-	background: url(../images/div-grey-top.png) no-repeat center top #f8f8f8;
+	background: url(../img/div-grey-top.png) no-repeat center top #f8f8f8;
 	width: 100%;
 	border-bottom: 1px solid #eaeaea;
 }
@@ -420,12 +420,12 @@ ol.number li, ol.roman li {
 /*----- 2.1 header -----*/
 /*----------------------------------------*/
 #header_wrapper {
-	background: url(../images/header-bg.png) no-repeat center top #e3e3e3;
+	background: url(../img/header-bg.png) no-repeat center top #e3e3e3;
 	width: 100%;
 	height: auto;
 }
 #header {
-	background: url(../images/nav-bg.png) no-repeat center top;
+	background: url(../img/nav-bg.png) no-repeat center top;
 	width:940px;
 	height: 90px;
 	z-index: 9999;
@@ -595,7 +595,7 @@ ul#mycarousel li img {
 	overflow:hidden;
 }
 .thumb .zoom {
-	background: url(../images/zoom.png) 0 0 no-repeat transparent;
+	background: url(../img/zoom.png) 0 0 no-repeat transparent;
 	width: 80px;
 	height: 80px;
 	position:absolute;
@@ -604,7 +604,7 @@ ul#mycarousel li img {
 	outline: none;
 }
 .thumb .zoom:hover {
-	background: url(../images/zoom.png) 0 -80px no-repeat transparent;
+	background: url(../img/zoom.png) 0 -80px no-repeat transparent;
 }
 /*----------------------------------------*/
 /*----- 2.5 doe-sem-cadastro -----*/
@@ -682,7 +682,7 @@ ul.textlist li {
 	height: 88px;
 }
 #contatoform input.submit {
-	background: url(../images/btn-submit.png) no-repeat;
+	background: url(../img/btn-submit.png) no-repeat;
 	width: 300px;
 	height: 40px;
 	font-family: 'Lato', sans-serif;
@@ -942,7 +942,7 @@ ul.social li img {
 	color: #6b6e6f;
 }
 .ribbon {
-	background: url(../images/corner-best.png) no-repeat;
+	background: url(../img/corner-best.png) no-repeat;
 	width: 48px;
 	height: 48px;
 	position: absolute;
@@ -986,7 +986,7 @@ ul.social li img {
  width: 224px;
 }
 #contatoform input.submit {
- background: url(../images/btn-submit-small.png) no-repeat;
+ background: url(../img/btn-submit-small.png) no-repeat;
  width: 236px;
 }
 #footer {
@@ -1000,7 +1000,7 @@ ul.social li img {
  bottom:40px;
  right:40px;
  display:none;
- background: url(../images/Arrow-Up.png) no-repeat;
+ background: url(../img/Arrow-Up.png) no-repeat;
  font-size: 0px;
  text-indent: -9999;
 }

@@ -99,7 +99,7 @@ $(function() {
 var imgSizer = {
 	Config : {
 		imgCache : []
-		,spacer : "../images/spacer.gif"
+		,spacer : "../img/spacer.gif"
 	}
 
 	,collate : function(aScope) {
