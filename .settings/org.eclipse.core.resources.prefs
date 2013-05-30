@@ -4,3 +4,4 @@ encoding//sejavoluntario/apps/users/admin.py=utf-8
 encoding//sejavoluntario/apps/users/forms.py=utf-8
 encoding//sejavoluntario/apps/users/migrations/0002_auto__add_area.py=utf-8
 encoding//sejavoluntario/apps/users/models.py=utf-8
+encoding//sejavoluntario/urls.py=utf-8
