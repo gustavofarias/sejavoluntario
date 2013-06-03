@@ -84,6 +84,7 @@ class UserProfile (models.Model):
 class Voluntario(UserProfile):
     sexo = models.CharField(max_length=1, blank=True, null=True)
     nascimento = models.DateTimeField(blank=True, null=True)
+    is_working = models.BooleanField(default=False)
     
 class Banco(models.Model):
     nome = models.CharField(max_length=20)
