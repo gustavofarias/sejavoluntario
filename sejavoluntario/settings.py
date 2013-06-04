@@ -160,4 +160,4 @@ LOGGING = {
     }
 }
 
-LOGIN_URL = '/auth/login'
+LOGIN_URL = '/user/login'

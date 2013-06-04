@@ -65,7 +65,7 @@ class Endereco(models.Model):
 
 class UserProfile (models.Model):
     user = models.ForeignKey(User)
-    photo = models.FileField(upload_to='/image')
+    photo = models.FileField(upload_to='/image', default=None, null=True, blank=True)
     document = models.CharField(max_length=20)
     telephone = models.CharField(max_length=20)
     celphone = models.CharField(max_length=20)

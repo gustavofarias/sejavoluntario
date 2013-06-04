@@ -19,7 +19,7 @@ urlpatterns = patterns('',
     url(r'^me/?$', coreViews.logged_user, name="logged_user"),
     
     #login
-    url(r'^user/login/?$', userViews.user_login, name="user_login"),
+    url(r'^user/login/?$', coreViews.user_login, name="user_login"),
     
     #registros
     url(r'^user/register/?$', userViews.userRegistration, name="user_registration"),

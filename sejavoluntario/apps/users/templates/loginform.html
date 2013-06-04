@@ -1,4 +1,60 @@
-<form action="/auth/login/" method="post">{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Submit" />
-</form>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main">
+
+    <div class="container">
+
+      <div class="row">
+        
+        <div class="span12">
+            
+            <div class="widget stacked">
+                    
+                <div class="widget-header">
+                    <i class="icon-check"></i>
+                    <h3>Form Validation</h3>
+                </div> <!-- /widget-header -->
+                
+                <div class="widget-content">
+                    
+                    <br />
+                    
+                    <form action="/user/login/" class="form-horizontal" method="post">{% csrf_token %}
+                        <fieldset>
+                            <div class="control-group">
+                              <label class="control-label" for="id_email">Seu email:</label>
+                              <div class="controls">
+                                {{ form.email }}
+                              </div>
+                            </div>
+                            
+                            <div class="control-group">
+                              <label class="control-label" for="id_password">Sua senha:</label>
+                              <div class="controls">
+                                {{ form.password }}
+                              </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                              <button type="submit" class="btn btn-danger btn">Login</button>&nbsp;&nbsp;
+                            </div>
+                          </fieldset>
+                        </form>
+                    
+                </div> <!-- /widget-content -->
+                    
+            </div> <!-- /widget -->                 
+            
+        </div> <!-- /span12 -->         
+        
+        
+      </div> <!-- /row -->
+
+    </div> <!-- /container -->
+    
+</div> <!-- /main -->
+
+
+
+{% endblock %}
