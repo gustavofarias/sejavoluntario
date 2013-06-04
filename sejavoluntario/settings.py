@@ -159,3 +159,5 @@ LOGGING = {
         },
     }
 }
+
+LOGIN_URL = '/auth/login'

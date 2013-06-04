@@ -188,3 +188,15 @@ class AddressRegistrationForm(forms.Form):
                                                       numero=numero)
         
         return address
+
+class LoginForm(forms.Form):
+    email = forms.CharField(max_length=50, label=u"Seu e-mail")
+    password = forms.CharField(widget=forms.PasswordInput, max_length=100, label=u"Sua senha")
+
+    def clean_email(self):
+        try:
+            User.objects.get( username = self.data.get('email') )
+        except User.DoesNotExist:
+            raise forms.ValidationError(u"Usuário inexistente.")
+        
+        return self.data.get('email')

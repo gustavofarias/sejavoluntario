@@ -80,11 +80,6 @@ class UserProfile (models.Model):
 
     def __unicode__(self):
         return self.user.email
-
-class Voluntario(UserProfile):
-    sexo = models.CharField(max_length=1, blank=True, null=True)
-    nascimento = models.DateTimeField(blank=True, null=True)
-    is_working = models.BooleanField(default=False)
     
 class Banco(models.Model):
     nome = models.CharField(max_length=20)
@@ -116,3 +111,9 @@ class DadosBancarios(models.Model):
 class Beneficiario(UserProfile):
     banco = models.ForeignKey(DadosBancarios, null=True, blank=True, default=None)
     site = models.URLField(null=True, blank=True, default=None)
+    
+class Voluntario(UserProfile):
+    sexo = models.CharField(max_length=1, blank=True, null=True)
+    nascimento = models.DateTimeField(blank=True, null=True)
+    is_volunteer = models.BooleanField(default=False)
+    is_volunteering_at = models.ForeignKey(Beneficiario, blank=True, null=True, default=False)
