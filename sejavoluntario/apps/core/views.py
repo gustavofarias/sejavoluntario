@@ -8,9 +8,9 @@ from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext
 
-from sejavoluntario.apps.users.models import UserProfile
 from sejavoluntario.apps.users.forms import LoginForm
-
+from sejavoluntario.apps.users.models import UserProfile
+from sejavoluntario.apps.users.models import Voluntario
 
 def index(request):
     return render(request, "index.html")
@@ -56,6 +56,14 @@ def user_login(request):
     
 @login_required(login_url=settings.LOGIN_URL)
 def logged_user(request):
+    import ipdb;ipdb.set_trace()
+    usuario = UserProfile.objects.filter(user=request.user)
+    if not usuario:
+        return render(request, "logout.html")
+    try:
+        pass
+    except:
+        pass
     if request.user.is_authenticated():
         return render(request, "loggeduser.html")
 
