@@ -56,16 +56,39 @@ def user_login(request):
     
 @login_required(login_url=settings.LOGIN_URL)
 def logged_user(request):
-    import ipdb;ipdb.set_trace()
-    usuario = UserProfile.objects.filter(user=request.user)
+    
+    if not request.user.is_authenticated():
+        return render(request, "logout.html")
+    
+    usuario = UserProfile.objects.get(user=request.user)
+    
     if not usuario:
         return render(request, "logout.html")
+    
+    context = RequestContext(request)
+    
     try:
-        pass
+        voluntario = usuario.voluntario
+        beneficiario = None
+        context.update({'voluntario': voluntario})
     except:
-        pass
+        beneficiario = usuario.beneficiario
+        voluntario = None
+        context.update({'beneficiario': beneficiario})
+    
+    
+    return render(request, "loggeduser.html", context)
+    
+def user_logout(request):
     if request.user.is_authenticated():
-        return render(request, "loggeduser.html")
+        logout(request)
+    
+    form_login = LoginForm()
+
+    context = RequestContext(request)
+    context.update({'form': form_login, 'remove_back_header': True, 'remove_cadastro_header': True})
+    
+    return render(request, 'loginform.html', context)
 
 
 

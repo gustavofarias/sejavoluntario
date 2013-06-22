@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from sejavoluntario.apps.users.forms import AddressRegistrationForm
 from sejavoluntario.apps.users.forms import BeneficiarioRegistrationForm
@@ -30,7 +32,9 @@ def bankDataRegistration(request):
         'form': form,
     })
 
+@login_required(login_url=settings.LOGIN_URL)
 def addressRegistration(request):
+    import ipdb;ipdb.set_trace()
     if request.method == 'POST':
         form = AddressRegistrationForm(request.POST)
         if form.is_valid():

@@ -1,4 +1,75 @@
-<form action="/address/register/" method="post">{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Submit" />
-</form>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main">
+
+    <div class="container">
+
+      <div class="row">
+        
+        <div class="span12">
+            
+            <div class="widget stacked">
+                    
+                <div class="widget-header">
+                    <i class="icon-check"></i>
+                    <h3>Cadastrar Endereço</h3>
+                </div> <!-- /widget-header -->
+                
+                <div class="widget-content">
+                    
+                    <br />
+                    
+                    <form action="/address/register/" class="form-horizontal" method="post">{% csrf_token %}
+                        <fieldset>
+                        	
+                        	<div class="control-group">
+                              <label class="control-label" for="id_cep">CEP:</label>
+                              <div class="controls">
+                                {{ form.cep }}
+                              </div>
+                            </div>
+                        	
+                            <div class="control-group">
+                              <label class="control-label" for="id_logradouro">Endereço:</label>
+                              <div class="controls">
+                                {{ form.logradouro }}
+                              </div>
+                            </div>
+                            
+                            <div class="control-group">
+                              <label class="control-label" for="id_numero">Número:</label>
+                              <div class="controls">
+                                {{ form.numero }}
+                              </div>
+                            </div>
+                            
+                            <div class="control-group">
+                              <label class="control-label" for="id_complemento">Complemento:</label>
+                              <div class="controls">
+                                {{ form.complemento }}
+                              </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                              <button type="submit" class="button btn btn-primary btn-large">Registrar</button>&nbsp;&nbsp;
+                            </div>
+                          </fieldset>
+                        </form>
+                    
+                </div> <!-- /widget-content -->
+                    
+            </div> <!-- /widget -->                 
+            
+        </div> <!-- /span12 -->         
+        
+        
+      </div> <!-- /row -->
+
+    </div> <!-- /container -->
+    
+</div> <!-- /main -->
+
+
+
+{% endblock %}

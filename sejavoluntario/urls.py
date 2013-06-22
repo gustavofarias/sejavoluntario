@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     
     #login
     url(r'^user/login/?$', coreViews.user_login, name="user_login"),
+    url(r'^user/logout/?$', coreViews.user_logout, name="user_logout"),
     
     #registros
     url(r'^user/register/?$', userViews.userRegistration, name="user_registration"),
