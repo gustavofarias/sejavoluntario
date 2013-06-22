@@ -22,7 +22,6 @@ def user_login(request):
     context = RequestContext(request)
     
     if request.method=="POST":
-        import ipdb;ipdb.set_trace()
         form_login = LoginForm(request.POST)
         
         if request.POST.get('email') and request.POST.get('password'):
@@ -32,13 +31,16 @@ def user_login(request):
             usuario = User.objects.filter(Q(username=email))
             
             if not usuario:
-                context.update({'form': form_login, 'messge': 'Usuário não está cadastrado'})
+                context.update({'form': form_login, 'message': 'Usuário não está cadastrado'})
                 return render(request, 'loginform.html', context)
             
+            usuario = usuario[0]
+            import ipdb;ipdb.set_trace()
+            usuario = authenticate(username=usuario.email, password=password)
             if usuario.is_active:
                 if usuario.check_password(password):
                     login(request, usuario)
-                    return render(request, 'logged.html', context)
+                    return render(request, 'loggeduser.html', context)
                 
                 else:
                     form_login.errors.update( {'password': ['Senha inválida'] } )

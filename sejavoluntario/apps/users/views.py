@@ -9,7 +9,7 @@ def userRegistration(request):
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'thanks.html')
+            return render(request, 'logged.html')
     else:
         form = UserRegistrationForm()
 

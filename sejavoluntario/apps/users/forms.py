@@ -13,6 +13,7 @@ from sejavoluntario.apps.users.models import UserProfile
 from sejavoluntario.apps.users.models import Voluntario
 
 import logging
+import time
 
 class UserRegistrationForm(forms.Form):
     
@@ -26,7 +27,7 @@ class UserRegistrationForm(forms.Form):
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput())
     repeat_password = forms.CharField(widget=forms.PasswordInput())
-    data_nascimento = forms.DateField()
+    data_nascimento = forms.CharField(widget=forms.TextInput(attrs={'id': 'datepicker', 'class':'hasDatepicker'}))
     sexo = forms.ChoiceField(choices=SEX_CHOICES)
     area = forms.MultipleChoiceField(choices=Area.objects.all(),
                                   widget=CheckboxSelectMultiple,
@@ -65,7 +66,8 @@ class UserRegistrationForm(forms.Form):
         email = self.cleaned_data.get('email')
         password = self.cleaned_data.get('password')
         sexo = self.cleaned_data.get('sexo')
-        data_nascimento = self.cleaned_data.get('data_nascimento')
+        data_nascimento = time.strptime(self.cleaned_data.get('data_nascimento'), '%d/%m/%Y')
+        data_nascimento = time.strftime('%Y-%m-%d 00:00', data_nascimento)
         area = self.cleaned_data.get('area')
         username = email
         
@@ -79,6 +81,7 @@ class UserRegistrationForm(forms.Form):
             voluntario.user = user
             voluntario.sexo = sexo
             voluntario.nascimento = data_nascimento
+            voluntario.is_volunteering_at = None
             voluntario.save()
 
             voluntario.areas = area
