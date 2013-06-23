@@ -5,10 +5,15 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from django.template import RequestContext
+from django.utils import simplejson
+
+import json
 
 from sejavoluntario.apps.users.forms import LoginForm
+from sejavoluntario.apps.users.models import Area
+from sejavoluntario.apps.users.models import Beneficiario
 from sejavoluntario.apps.users.models import UserProfile
 from sejavoluntario.apps.users.models import Voluntario
 
@@ -17,7 +22,7 @@ def index(request):
 
 def user_login(request):
     if request.user.is_authenticated():
-        return render(request, "loggeduser.html")
+        return redirect("/me")
 
     context = RequestContext(request)
     
@@ -90,5 +95,24 @@ def user_logout(request):
     
     return render(request, 'loginform.html', context)
 
+def lista_beneficiarios(request, area=None, bairro=None, qtd=None):
+    area = Area.objects.filter(name=area)
 
+    if area:
+        if bairro:
+            listagem_beneficiarios = Beneficiario.objects.filter(areas=area, endereco__bairro=bairro)[:qtd]
+        else:
+            listagem_beneficiarios = Beneficiario.objects.filter(areas=area)[:qtd]
+            
+    else:
+        if bairro:
+            listagem_beneficiarios = Beneficiario.objects.filter(endereco__bairro=bairro)[:qtd]
+        else:
+            listagem_beneficiarios = Beneficiario.objects.filter()[:qtd]
+            
+    json_beneficiarios = {}
+    import ipdb;ipdb.set_trace()
+    for beneficiario in listagem_beneficiarios:
+        json_beneficiarios[beneficiario.user.first_name] = beneficiario.user.first_name
 
+    return HttpResponse(json.dumps(json_beneficiarios), content_type="application/json")

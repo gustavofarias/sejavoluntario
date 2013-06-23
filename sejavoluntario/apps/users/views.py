@@ -1,17 +1,18 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from sejavoluntario.apps.users.forms import AddressRegistrationForm
 from sejavoluntario.apps.users.forms import BeneficiarioRegistrationForm
 from sejavoluntario.apps.users.forms import BankDataRegistrationForm
 from sejavoluntario.apps.users.forms import UserRegistrationForm
+from sejavoluntario.apps.users.models import UserProfile
 
 def userRegistration(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'logged.html')
+            return redirect('/me')
     else:
         form = UserRegistrationForm()
 
@@ -34,12 +35,16 @@ def bankDataRegistration(request):
 
 @login_required(login_url=settings.LOGIN_URL)
 def addressRegistration(request):
-    import ipdb;ipdb.set_trace()
     if request.method == 'POST':
         form = AddressRegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
-            return render(request, 'thanks.html')
+            endereco = form.save()
+            usuario_id = request.POST.get("usuario_id")
+            usuario = UserProfile.objects.get(user=usuario_id)
+            usuario.endereco = endereco
+            usuario.save()
+            
+            return redirect('/me')
     else:
         form = AddressRegistrationForm()
 
@@ -57,5 +62,17 @@ def beneficiarioRegistration(request):
         form = BeneficiarioRegistrationForm()
 
     return render(request, 'beneficiarioregistrationform.html', {
+        'form': form,
+    })
+    
+@login_required(login_url=settings.LOGIN_URL)
+def user_profile(request):
+    
+    if request.method == 'POST':
+        pass
+    else:
+        form = AddressRegistrationForm()
+
+    return render(request, 'profile.html', {
         'form': form,
     })

@@ -20,36 +20,19 @@
 					
 					<div class="stats">
 						
-						<div class="stat">
-							<span class="stat-value">{{user}}</span>									
-							Site Visits
-						</div> <!-- /stat -->
-						
-						<div class="stat">
-							<span class="stat-value">9,249</span>									
-							Unique Visits
-						</div> <!-- /stat -->
-						
-						<div class="stat">
-							<span class="stat-value">70%</span>									
-							New Visits
-						</div> <!-- /stat -->
+						{% if not voluntario.endereco %}
+							Perfil incompleto. <a href="">Cadastre seu endereço.</a>
+						{% else %}
+							<script>
+								$.ajax({
+								  url: "/beneficario/area-interesse/{{voluntario.userprofile}}/bairro/{{voluntario.endenreco.bairro}}/qtd/10/"
+								}).done(function() {
+								  $(this).addClass("done");
+								});
+							</script>
+						{% endif %}
 						
 					</div> <!-- /stats -->
-					
-					
-					<div id="chart-stats" class="stats">
-						
-						<div class="stat stat-chart">							
-							<div id="donut-chart" class="chart-holder"></div> <!-- #donut -->							
-						</div> <!-- /substat -->
-						
-						<div class="stat stat-time">									
-							<span class="stat-value">00:28:13</span>
-							Average Time on Site
-						</div> <!-- /substat -->
-						
-					</div> <!-- /substats -->
 					
 				</div> <!-- /widget-content -->
 					
