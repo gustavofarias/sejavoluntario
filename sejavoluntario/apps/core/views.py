@@ -63,23 +63,24 @@ def user_login(request):
 def logged_user(request):
     
     if not request.user.is_authenticated():
-        return render(request, "logout.html")
+        return redirect("/user/logout")
     
     usuario = UserProfile.objects.get(user=request.user)
     
     if not usuario:
-        return render(request, "logout.html")
+        return redirect("/user/logout")
     
     context = RequestContext(request)
-    
     try:
         voluntario = usuario.voluntario
         beneficiario = None
-        context.update({'voluntario': voluntario})
+        areas = voluntario.areas.all()[0]
+        context.update({'voluntario': voluntario, 'areas':areas})
     except:
         beneficiario = usuario.beneficiario
         voluntario = None
-        context.update({'beneficiario': beneficiario})
+        areas = beneficiario.areas.all()[0]
+        context.update({'beneficiario': beneficiario, 'areas':areas})
     
     
     return render(request, "loggeduser.html", context)
@@ -105,13 +106,9 @@ def lista_beneficiarios(request, area=None, bairro=None, qtd=None):
             listagem_beneficiarios = Beneficiario.objects.filter(areas=area)[:qtd]
             
     else:
-        if bairro:
-            listagem_beneficiarios = Beneficiario.objects.filter(endereco__bairro=bairro)[:qtd]
-        else:
-            listagem_beneficiarios = Beneficiario.objects.filter()[:qtd]
+        return redirect("/me")
             
     json_beneficiarios = {}
-    import ipdb;ipdb.set_trace()
     for beneficiario in listagem_beneficiarios:
         json_beneficiarios[beneficiario.user.first_name] = beneficiario.user.first_name
 

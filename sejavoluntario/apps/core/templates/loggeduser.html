@@ -25,7 +25,7 @@
 						{% else %}
 							<script>
 								$.ajax({
-								  url: "/beneficario/area-interesse/{{voluntario.userprofile}}/bairro/{{voluntario.endenreco.bairro}}/qtd/10/"
+								  url: "/beneficario/area-interesse/{{areas}}/bairro/{{voluntario.endenreco.bairro}}/qtd/10/"
 								}).done(function() {
 								  $(this).addClass("done");
 								});
