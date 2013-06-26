@@ -37,11 +37,12 @@ class Cidade(models.Model):
         return u'{0} ({1})'.format(self.nome, self.estado.sigla)
 
 class AddressManager(models.Manager):
-    def create_address(self, logradouro, numero, complemento, cep):
+    def create_address(self, logradouro, numero, complemento, cep, bairro):
         address = self.create(logradouro=logradouro,
                               numero=numero,
                               complemento=complemento,
-                              cep=cep)
+                              cep=cep,
+                              bairro=bairro)
         return address
 
 class Endereco(models.Model):
@@ -107,7 +108,7 @@ class DadosBancarios(models.Model):
         verbose_name = "Dados Bancários"
         
     def __unicode__(self):
-        return self.favorevido
+        return self.favorecido
 
 class Beneficiario(UserProfile):
     banco = models.ForeignKey(DadosBancarios, null=True, blank=True, default=None)

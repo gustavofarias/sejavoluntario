@@ -19,6 +19,9 @@ urlpatterns = patterns('',
     url(r'^me/?$', coreViews.logged_user, name="logged_user"),
     url(r'^me/profile/?$', userViews.user_profile, name="user_profile"),
     
+    #beneficiario
+    url(r'^beneficiario/(?P<beneficiario_id>[0-9]+)/?$', userViews.show_beneficiario, name="show_beneficiario"),
+    
     #json
     url(r'^beneficario/area-interesse/(?P<area>[0-9a-zA-Z]+)/bairro/(?P<bairro>[\w\+%_& ]+)?/qtd/(?P<qtd>[0-9]+)/?$', coreViews.lista_beneficiarios, name="lista_beneficiarios"),
     

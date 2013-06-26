@@ -1,10 +1,11 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from sejavoluntario.apps.users.forms import AddressRegistrationForm
 from sejavoluntario.apps.users.forms import BeneficiarioRegistrationForm
 from sejavoluntario.apps.users.forms import BankDataRegistrationForm
 from sejavoluntario.apps.users.forms import UserRegistrationForm
+from sejavoluntario.apps.users.models import Beneficiario
 from sejavoluntario.apps.users.models import UserProfile
 from sejavoluntario.apps.users.models import Voluntario
 
@@ -73,22 +74,28 @@ def user_profile(request):
     voluntario = Voluntario.objects.get(user=request.user.id)
     endereco = voluntario.endereco
     
-    address_data = {
-                    'logradouro' : endereco.logradouro,
-                    'cep' : endereco.cep,
-                    'numero' : endereco.numero,
-                    'complemento' : endereco.complemento,
-                    'bairro' : endereco.bairro,
-                    }
+    if endereco:
+        address_data = {
+                        'logradouro' : endereco.logradouro,
+                        'cep' : endereco.cep,
+                        'numero' : endereco.numero,
+                        'complemento' : endereco.complemento,
+                        'bairro' : endereco.bairro,
+                        }
+    else:
+        address_data = {}
 
-    volunteer_data ={
-                     'username':voluntario.user.username,
-                     'first_name':voluntario.user.first_name,
-                     'last_name':voluntario.user.last_name,
-                     'email':voluntario.user.email,
-                     'password':'',
-                     'repeat_password':'',
-                     }
+    if voluntario:
+        volunteer_data ={
+                         'username':voluntario.user.username,
+                         'first_name':voluntario.user.first_name,
+                         'last_name':voluntario.user.last_name,
+                         'email':voluntario.user.email,
+                         'password':'',
+                         'repeat_password':'',
+                         }
+    else:
+        volunteer_data = {}
     
     address_form = AddressRegistrationForm(address_data)
     volunteer_form = UserRegistrationForm(volunteer_data)
@@ -97,3 +104,12 @@ def user_profile(request):
         'address_form': address_form,
         'volunteer_form':volunteer_form,
     })
+
+def show_beneficiario(request, beneficiario_id):
+    beneficiario = get_object_or_404(Beneficiario, id=beneficiario_id)
+
+    return render(request, 'beneficiario.html',
+               {
+                'beneficiario':beneficiario,
+                }
+               )
