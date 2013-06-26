@@ -20,7 +20,7 @@ urlpatterns = patterns('',
     url(r'^me/profile/?$', userViews.user_profile, name="user_profile"),
     
     #json
-    url(r'^beneficario/area-interesse/(?P<area>[0-9a-zA-Z]+)/bairro/(?P<bairro>[0-9a-zA-Z]+)?/qtd/(?P<qtd>[0-9]+)/?$', coreViews.lista_beneficiarios, name="lista_beneficiarios"),
+    url(r'^beneficario/area-interesse/(?P<area>[0-9a-zA-Z]+)/bairro/(?P<bairro>[\w\+%_& ]+)?/qtd/(?P<qtd>[0-9]+)/?$', coreViews.lista_beneficiarios, name="lista_beneficiarios"),
     
     #login
     url(r'^user/login/?$', coreViews.user_login, name="user_login"),

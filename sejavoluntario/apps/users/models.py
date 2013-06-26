@@ -47,8 +47,9 @@ class AddressManager(models.Manager):
 class Endereco(models.Model):
     logradouro = models.TextField(max_length=255,)
     numero = models.IntegerField(null=True, blank=True, default=None)
-    complemento = models.CharField(max_length=255,null=True, blank=True, default=None)
+    complemento = models.CharField(max_length=100,null=True, blank=True, default=None)
     cep = models.IntegerField(max_length=6,)
+    bairro = models.CharField(max_length=100)
     estado = models.ForeignKey(Estado, null=True, blank=True, default=None)
     cidade = models.ForeignKey(Cidade, null=True, blank=True, default=None)
     pais = models.ForeignKey(Pais, null=True, blank=True, default=None)
@@ -110,6 +111,7 @@ class DadosBancarios(models.Model):
 
 class Beneficiario(UserProfile):
     banco = models.ForeignKey(DadosBancarios, null=True, blank=True, default=None)
+    description = models.CharField(max_length=500)
     site = models.URLField(null=True, blank=True, default=None)
     
 class Voluntario(UserProfile):

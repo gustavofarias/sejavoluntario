@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
+{% block css %}
+	{{ block.super }}
+	<link href="{{ STATIC_URL }}css/page-volunteer.css" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 <div class="main">
 
@@ -9,11 +14,11 @@
       	
       	<div class="span6">
       		
-      		<div class="widget stacked">
+      		<div class="widget stacked widget-nopad">
 					
 				<div class="widget-header">
 					<i class="icon-star"></i>
-					<h3>Quick Stats</h3>
+					<h3>Empresas disponíveis</h3>
 				</div> <!-- /widget-header -->
 				
 				<div class="widget-content">
@@ -23,13 +28,7 @@
 						{% if not voluntario.endereco %}
 							Perfil incompleto. <a href="">Cadastre seu endereço.</a>
 						{% else %}
-							<script>
-								$.ajax({
-								  url: "/beneficario/area-interesse/{{areas}}/bairro/{{voluntario.endenreco.bairro}}/qtd/10/"
-								}).done(function() {
-								  $(this).addClass("done");
-								});
-							</script>
+							<div id="empresas-disponiveis"></div>
 						{% endif %}
 						
 					</div> <!-- /stats -->
@@ -307,4 +306,27 @@
     
 </div> <!-- /main -->
 
+{% endblock %}
+
+{% block js %}
+	{{ block.super }}
+	
+    <script>
+		$.ajax({
+		  url: "/beneficario/area-interesse/{{areas}}/bairro/{{voluntario.endereco.bairro}}/qtd/3/"
+		}).done(function(data) {
+		  item = '<ul class="news-items">';
+		  $.each(data, function(){
+		  	item += '<li>';
+		  	  item += '<div class="news-item-detail">';
+		  	    item += '<a href=/beneficiario/' + this['id'] + ' class="news-item-title">' + this['name'] + '</a>';
+		  	    item += '<p class="news-item-preview">' + this['description'] + '</p>';
+		  	  item += '</div>';
+		  	item += '</li>';
+		  });
+		  item += '</ul>';
+		  
+		  $("#empresas-disponiveis").html(item)
+		});
+	</script>
 {% endblock %}

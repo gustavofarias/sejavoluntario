@@ -32,60 +32,55 @@
 					
 						<div class="tab-content">
 							<div class="tab-pane active" id="profile">
-							<form id="edit-profile" class="form-horizontal">
+							<form id="edit-profile" class="form-horizontal" action="/user/register/" method="post">{% csrf_token %}
 								<fieldset>
 									
-									<div class="control-group">											
-										<label class="control-label" for="username">Username</label>
-										<div class="controls">
-											<input type="text" class="input-medium disabled" id="username" value="alterar" disabled>
-											<p class="help-block">Your username is for logging in and cannot be changed.</p>
-										</div> <!-- /controls -->				
-									</div> <!-- /control-group -->
+									<div class="control-group">
+		                              <label class="control-label" for="id_username">Username:</label>
+		                              <div class="controls">
+		                                {{ volunteer_form.username }}
+		                                <p class="help-block">Your username is for logging in and cannot be changed.</p>
+		                              </div>
+		                            </div>
 									
+									<div class="control-group">
+		                              <label class="control-label" for="id_first_name">First Name:</label>
+		                              <div class="controls">
+		                                {{ volunteer_form.first_name }}
+		                              </div>
+		                            </div>
 									
-									<div class="control-group">											
-										<label class="control-label" for="firstname">First Name</label>
-										<div class="controls">
-											<input type="text" class="input-medium" id="firstname" value="Rod">
-										</div> <!-- /controls -->				
-									</div> <!-- /control-group -->
+									<div class="control-group">
+		                              <label class="control-label" for="id_last_name">Last Name:</label>
+		                              <div class="controls">
+		                                {{ volunteer_form.last_name }}
+		                              </div>
+		                            </div>
 									
-									
-									<div class="control-group">											
-										<label class="control-label" for="lastname">Last Name</label>
-										<div class="controls">
-											<input type="text" class="input-medium" id="lastname" value="Howard">
-										</div> <!-- /controls -->				
-									</div> <!-- /control-group -->
-									
-									
-									<div class="control-group">											
-										<label class="control-label" for="email">Email Address</label>
-										<div class="controls">
-											<input type="text" class="input-large" id="email" value="rod.howard@example.com">
-										</div> <!-- /controls -->				
-									</div> <!-- /control-group -->
+									<div class="control-group">
+		                              <label class="control-label" for="id_email">Email:</label>
+		                              <div class="controls">
+		                                {{ volunteer_form.email }}
+		                              </div>
+		                            </div>
 									
 									
 									<br /><br />
 									
-									<div class="control-group">											
-										<label class="control-label" for="password1">Password</label>
-										<div class="controls">
-											<input type="password" class="input-medium" id="password1" value="password">
-										</div> <!-- /controls -->				
-									</div> <!-- /control-group -->
+									<div class="control-group">
+		                              <label class="control-label" for="id_password">Password:</label>
+		                              <div class="controls">
+		                                {{ volunteer_form.password }}
+		                                <p class="help-block">Just fill password if you would like to change it.</p>
+		                              </div>
+		                            </div>
 									
-									
-									<div class="control-group">											
-										<label class="control-label" for="password2">Confirm</label>
-										<div class="controls">
-											<input type="password" class="input-medium" id="password2" value="password">
-										</div> <!-- /controls -->				
-									</div> <!-- /control-group -->
-									
-									
+									<div class="control-group">
+		                              <label class="control-label" for="id_repeat_password">Repeat Password:</label>
+		                              <div class="controls">
+		                                {{ volunteer_form.repeat_password }}
+		                              </div>
+		                            </div>
 										
 										<br />
 									
@@ -105,28 +100,35 @@
 			                        	<div class="control-group">
 			                              <label class="control-label" for="id_cep">CEP:</label>
 			                              <div class="controls">
-			                                {{ form.cep }}
+			                                {{ address_form.cep }}
 			                              </div>
 			                            </div>
 			                        	
 			                            <div class="control-group">
 			                              <label class="control-label" for="id_logradouro">Endereço:</label>
 			                              <div class="controls">
-			                                {{ form.logradouro }}
+			                                {{ address_form.logradouro }}
 			                              </div>
 			                            </div>
 			                            
 			                            <div class="control-group">
 			                              <label class="control-label" for="id_numero">Número:</label>
 			                              <div class="controls">
-			                                {{ form.numero }}
+			                                {{ address_form.numero }}
 			                              </div>
 			                            </div>
 			                            
 			                            <div class="control-group">
 			                              <label class="control-label" for="id_complemento">Complemento:</label>
 			                              <div class="controls">
-			                                {{ form.complemento }}
+			                                {{ address_form.complemento }}
+			                              </div>
+			                            </div>
+			                            
+			                            <div class="control-group">
+			                              <label class="control-label" for="id_bairro">Bairro:</label>
+			                              <div class="controls">
+			                                {{ address_form.bairro }}
 			                              </div>
 			                            </div>
 			                            

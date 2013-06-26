@@ -22,6 +22,7 @@ class UserRegistrationForm(forms.Form):
         ('F', 'Feminino'),
     )
     
+    username = forms.CharField(max_length=100)
     first_name = forms.CharField(max_length=100)
     last_name = forms.CharField(max_length=100)
     email = forms.EmailField()
@@ -70,7 +71,7 @@ class UserRegistrationForm(forms.Form):
         data_nascimento = time.strftime('%Y-%m-%d 00:00', data_nascimento)
         area = self.cleaned_data.get('area')
         username = email
-        
+        import ipdb;ipdb.set_trace()
         with transaction.commit_on_success():
             user = User.objects.create_user(username,email,password)
             user.first_name = first_name
@@ -173,22 +174,25 @@ class BankDataRegistrationForm(forms.Form):
     
 class AddressRegistrationForm(forms.Form):
     logradouro = forms.CharField(max_length=255)
-    complemento = forms.CharField(max_length=255)
+    bairro = forms.CharField(max_length=100)
+    complemento = forms.CharField(max_length=100)
     cep = forms.IntegerField()
     numero = forms.IntegerField()
-
+    
     def save(self, *args, **kwargs):
         
         logradouro = self.cleaned_data.get('logradouro')
         complemento = self.cleaned_data.get('complemento')
         cep = self.cleaned_data.get('cep')
         numero = self.cleaned_data.get('numero')
+        bairro = self.cleaned_data.get('bairro')
         
         with transaction.commit_on_success():
             address = Endereco.objects.create_address(logradouro=logradouro,
                                                       complemento=complemento,
                                                       cep=cep,
-                                                      numero=numero)
+                                                      numero=numero,
+                                                      bairro=bairro)
         
         return address
 

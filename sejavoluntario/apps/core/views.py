@@ -40,7 +40,6 @@ def user_login(request):
                 return render(request, 'loginform.html', context)
             
             usuario = usuario[0]
-            import ipdb;ipdb.set_trace()
             usuario = authenticate(username=usuario.email, password=password)
             if usuario.is_active:
                 if usuario.check_password(password):
@@ -82,7 +81,6 @@ def logged_user(request):
         areas = beneficiario.areas.all()[0]
         context.update({'beneficiario': beneficiario, 'areas':areas})
     
-    
     return render(request, "loggeduser.html", context)
     
 def user_logout(request):
@@ -101,15 +99,22 @@ def lista_beneficiarios(request, area=None, bairro=None, qtd=None):
 
     if area:
         if bairro:
-            listagem_beneficiarios = Beneficiario.objects.filter(areas=area, endereco__bairro=bairro)[:qtd]
+            beneficiarios = Beneficiario.objects.filter(areas=area, endereco__bairro=bairro)[:qtd]
+            
+            if not beneficiarios:
+                beneficiarios = Beneficiario.objects.filter(areas=area)[:qtd]
         else:
-            listagem_beneficiarios = Beneficiario.objects.filter(areas=area)[:qtd]
+            beneficiarios = Beneficiario.objects.filter(areas=area)[:qtd]
             
     else:
         return redirect("/me")
-            
-    json_beneficiarios = {}
-    for beneficiario in listagem_beneficiarios:
-        json_beneficiarios[beneficiario.user.first_name] = beneficiario.user.first_name
+    
+    listagem_beneficiarios = []
+    for beneficiario in beneficiarios:
+        beneficarios = {}
+        beneficarios['id'] = beneficiario.id
+        beneficarios['name'] = beneficiario.user.first_name
+        beneficarios['description'] = beneficiario.description
+        listagem_beneficiarios.append(beneficarios)
 
-    return HttpResponse(json.dumps(json_beneficiarios), content_type="application/json")
+    return HttpResponse(json.dumps(listagem_beneficiarios), content_type="application/json")

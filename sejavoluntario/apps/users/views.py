@@ -6,8 +6,10 @@ from sejavoluntario.apps.users.forms import BeneficiarioRegistrationForm
 from sejavoluntario.apps.users.forms import BankDataRegistrationForm
 from sejavoluntario.apps.users.forms import UserRegistrationForm
 from sejavoluntario.apps.users.models import UserProfile
+from sejavoluntario.apps.users.models import Voluntario
 
 def userRegistration(request):
+    
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
@@ -68,11 +70,30 @@ def beneficiarioRegistration(request):
 @login_required(login_url=settings.LOGIN_URL)
 def user_profile(request):
     
-    if request.method == 'POST':
-        pass
-    else:
-        form = AddressRegistrationForm()
+    voluntario = Voluntario.objects.get(user=request.user.id)
+    endereco = voluntario.endereco
+    
+    address_data = {
+                    'logradouro' : endereco.logradouro,
+                    'cep' : endereco.cep,
+                    'numero' : endereco.numero,
+                    'complemento' : endereco.complemento,
+                    'bairro' : endereco.bairro,
+                    }
+
+    volunteer_data ={
+                     'username':voluntario.user.username,
+                     'first_name':voluntario.user.first_name,
+                     'last_name':voluntario.user.last_name,
+                     'email':voluntario.user.email,
+                     'password':'',
+                     'repeat_password':'',
+                     }
+    
+    address_form = AddressRegistrationForm(address_data)
+    volunteer_form = UserRegistrationForm(volunteer_data)
 
     return render(request, 'profile.html', {
-        'form': form,
+        'address_form': address_form,
+        'volunteer_form':volunteer_form,
     })
