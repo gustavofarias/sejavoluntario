@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     #ações logadas
     url(r'^me/?$', coreViews.logged_user, name="logged_user"),
     url(r'^me/profile/?$', userViews.user_profile, name="user_profile"),
+    url(r'^user/change_password/?$', userViews.change_password, name="change_password"),
     
     #beneficiario
     url(r'^beneficiario/(?P<beneficiario_id>[0-9]+)/?$', userViews.show_beneficiario, name="show_beneficiario"),
@@ -29,7 +30,7 @@ urlpatterns = patterns('',
     url(r'^user/login/?$', coreViews.user_login, name="user_login"),
     url(r'^user/logout/?$', coreViews.user_logout, name="user_logout"),
     
-    #registros
+    #inserts
     url(r'^user/register/?$', userViews.userRegistration, name="user_registration"),
     url(r'^bank/register/?$', userViews.bankDataRegistration, name="bank_registration"),
     url(r'^address/register/?$', userViews.addressRegistration, name="address_registration"),

@@ -22,7 +22,6 @@ class UserRegistrationForm(forms.Form):
         ('F', 'Feminino'),
     )
     
-    username = forms.CharField(max_length=100)
     first_name = forms.CharField(max_length=100)
     last_name = forms.CharField(max_length=100)
     email = forms.EmailField()
@@ -40,7 +39,6 @@ class UserRegistrationForm(forms.Form):
 
         self.fields['area'].choices = [(area.pk, area.name) for area in Area.objects.all()]
         
-    
     def clean_email(self):
         try:
             User.objects.get(email=self.data.get('email'))
@@ -60,7 +58,6 @@ class UserRegistrationForm(forms.Form):
         return cleaned_data
     
     def save(self, *args, **kwargs):
-        user = None
 
         first_name = self.cleaned_data.get('first_name')
         last_name = self.cleaned_data.get('last_name')
@@ -71,7 +68,7 @@ class UserRegistrationForm(forms.Form):
         data_nascimento = time.strftime('%Y-%m-%d 00:00', data_nascimento)
         area = self.cleaned_data.get('area')
         username = email
-        import ipdb;ipdb.set_trace()
+
         with transaction.commit_on_success():
             user = User.objects.create_user(username,email,password)
             user.first_name = first_name
@@ -89,6 +86,22 @@ class UserRegistrationForm(forms.Form):
             voluntario.save()
         
         return voluntario
+    
+class UserUpdateForm(forms.Form):
+    first_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'disabled': 'disabled'}))
+    last_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'disabled': 'disabled'}))
+    email = forms.EmailField(widget=forms.TextInput(attrs={'disabled': 'disabled'}))
+    password = forms.CharField(widget=forms.PasswordInput())
+    repeat_password = forms.CharField(widget=forms.PasswordInput())
+    
+    def clean(self):
+        cleaned_data = super(UserRegistrationForm, self).clean()
+        password = cleaned_data.get("password")
+        repeat_password = cleaned_data.get("repeat_password")
+        if password != repeat_password:
+            raise forms.ValidationError("Passwd and Repeat passwd don't match.")
+
+        return cleaned_data
     
 class BeneficiarioRegistrationForm(forms.Form):
     

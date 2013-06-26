@@ -44,7 +44,7 @@ def user_login(request):
             if usuario.is_active:
                 if usuario.check_password(password):
                     login(request, usuario)
-                    return render(request, 'loggeduser.html', context)
+                    return redirect('/me')
                 
                 else:
                     form_login.errors.update( {'password': ['Senha inválida'] } )

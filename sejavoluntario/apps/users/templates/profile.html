@@ -32,13 +32,13 @@
 					
 						<div class="tab-content">
 							<div class="tab-pane active" id="profile">
-							<form id="edit-profile" class="form-horizontal" action="/user/register/" method="post">{% csrf_token %}
+							<form id="edit-profile" class="form-horizontal" action="/user/change_password/" method="post">{% csrf_token %}
 								<fieldset>
 									
 									<div class="control-group">
 		                              <label class="control-label" for="id_username">Username:</label>
 		                              <div class="controls">
-		                                {{ volunteer_form.username }}
+		                                {{ volunteer_form.email }}
 		                                <p class="help-block">Username não pode ser alterado.</p>
 		                              </div>
 		                            </div>
@@ -71,7 +71,7 @@
 		                              <label class="control-label" for="id_password">Senha:</label>
 		                              <div class="controls">
 		                                {{ volunteer_form.password }}
-		                                <p class="help-block">Just fill password if you would like to change it.</p>
+		                                <p class="help-block">Só preencha se quiser alterar a senha.</p>
 		                              </div>
 		                            </div>
 									
@@ -132,7 +132,8 @@
 			                              </div>
 			                            </div>
 			                            
-			                            <input type="hidden" value="{{ user.id }}" name="usuario_id" id="usuario_id"/>
+			                            <input type="hidden" value="{{ endereco.id }}" name="endereco_id" id="endereco_id"/>
+			                            <input type="hidden" value="{{ usuario.id }}" name="usuario_id" id="usuario_id"/>
 			                            
 			                            <div class="form-actions">
 											<button type="submit" class="btn btn-primary">Save</button> <button class="btn">Cancel</button>
